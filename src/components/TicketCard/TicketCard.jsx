@@ -28,9 +28,8 @@ const TicketCard = ({ id, title, userImg, tag, userId }) => {
             </div>
             {/* UserImg */}
             <div className='userImg'>
-                {/* <img src="/assets/userPic.png" alt={userImg} />
-                <div className='available active' /> */}
-                <p>{userId}</p>
+                <img src="/assets/userPic.png" alt={userImg} />
+                <div className='available active' />
             </div>
         </div>
     )
