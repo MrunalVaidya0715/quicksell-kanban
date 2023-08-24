@@ -1,38 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import './Navbar.css';
 import { VscSettings } from 'react-icons/vsc';
 import { FiChevronDown } from 'react-icons/fi';
+import { useUserViewState } from '../../context/UserViewStateContext';
 const Navbar = () => {
     const [isOption, setIsOpen] = useState(false);
     const handleOption = () => {
         setIsOpen(prev => !prev);
     }
 
-    const [groupBy, setGroupBy] = useState(localStorage.getItem('userViewState')?.groupBy || "status");
-    const [orderBy, setOrderBy] = useState(localStorage.getItem('userViewState')?.orderBy || "priority")
-   
+    const { userViewState, updateUserViewState } = useUserViewState();
+    const {groupBy, orderBy} = userViewState;
+    console.log(groupBy, "--", orderBy)
+
     const handleGroupBy = (e) => {
         const newGroupBy = e.target.value;
-        setGroupBy(newGroupBy);
-        localStorage.setItem('userViewState', JSON.stringify({ groupBy: newGroupBy, orderBy: orderBy }));
-    }
-    
+        updateUserViewState(newGroupBy, userViewState.orderBy);
+    };
+
     const handleOrderBy = (e) => {
         const newOrderBy = e.target.value;
-        setOrderBy(newOrderBy);
-        localStorage.setItem('userViewState', JSON.stringify({ groupBy: groupBy, orderBy: newOrderBy }));
-        
-    }
-
-
-    useEffect(() => {
-        const savedUserViewState = localStorage.getItem('userViewState');
-        if (savedUserViewState) {
-            const parsedUserViewState = JSON.parse(savedUserViewState);
-            setGroupBy(parsedUserViewState.groupBy);
-            setOrderBy(parsedUserViewState.orderBy);
-        }
-    }, []);
+        updateUserViewState(userViewState.groupBy, newOrderBy);
+    };
     return (
         <nav className='kn__container'>
             <div className='kn__navbar'>

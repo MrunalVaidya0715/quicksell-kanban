@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './Content.css';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import Label from '../../components/Label/Label';
+import { useUserViewState } from '../../context/UserViewStateContext';
 
 const Content = () => {
 
-    const userViewState = JSON.parse(localStorage.getItem("userViewState"));
-    const groupBy = userViewState.groupBy;
-    const orderBy = userViewState.orderBy;
-    console.log(groupBy,"-",orderBy);
+    const { userViewState } = useUserViewState();
+    const {groupBy, orderBy} = userViewState;
     const [ticketsData, setTicketsData] = useState([]);
     const [usersData, setUsersData] = useState([]);
 
