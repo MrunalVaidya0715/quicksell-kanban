@@ -25,6 +25,7 @@
 
 .idInfo p {
   color: var(--font-sec2);
+  font-size: 14px;
 }
 
 .tags {
