@@ -16,11 +16,13 @@ const Navbar = () => {
     const handleGroupBy = (e) => {
         const newGroupBy = e.target.value;
         updateUserViewState(newGroupBy, userViewState.orderBy);
+        setIsOpen(false);
     };
 
     const handleOrderBy = (e) => {
         const newOrderBy = e.target.value;
         updateUserViewState(userViewState.groupBy, newOrderBy);
+        setIsOpen(false);
     };
     return (
         <nav className='kn__container'>
