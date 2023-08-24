@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './TicketCard.css';
 import { PiCheckCircleFill, PiCircle, PiClockCountdownBold, PiSpinnerLight } from 'react-icons/pi';
 import { BsFillExclamationSquareFill } from 'react-icons/bs'
 import { MdSignalCellularAlt, MdSignalCellularAlt2Bar, MdSignalCellularAlt1Bar, MdCancel } from 'react-icons/md'
 import { CgBorderStyleDashed } from 'react-icons/cg';
 import UserImg from '../UserImg/UserImg';
-import { useUserViewState } from '../../context/UserViewStateContext';
+import { UserViewStateContext} from '../../context/UserViewStateContext';
 
 const TicketCard = ({ id, title, tag, status, priority, userData }) => {
-    const { userViewState } = useUserViewState();
+    const { userViewState } = useContext(UserViewStateContext);
     const { groupBy} = userViewState;
     
 

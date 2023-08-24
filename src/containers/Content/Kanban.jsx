@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Kanban.css';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import Label from '../../components/Label/Label';
-import { useUserViewState } from '../../context/UserViewStateContext';
+import { UserViewStateContext } from '../../context/UserViewStateContext';
 import { CgBorderStyleDashed } from 'react-icons/cg';
 import { BsFillExclamationSquareFill } from 'react-icons/bs'
 import { MdSignalCellularAlt, MdSignalCellularAlt2Bar, MdSignalCellularAlt1Bar, MdCancel } from 'react-icons/md'
@@ -11,7 +11,7 @@ import { IoPersonCircle } from 'react-icons/io5'
 import UserImg from '../../components/UserImg/UserImg';
 const Kanban = () => {
 
-    const { userViewState } = useUserViewState();
+    const { userViewState } = useContext(UserViewStateContext);
     const { groupBy, orderBy } = userViewState;
     const [ticketsData, setTicketsData] = useState([]);
     const [usersData, setUsersData] = useState([]);

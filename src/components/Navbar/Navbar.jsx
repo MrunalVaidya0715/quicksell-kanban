@@ -1,15 +1,15 @@
-import React, {useState } from 'react';
+import React, {useContext, useState } from 'react';
 import './Navbar.css';
 import { VscSettings } from 'react-icons/vsc';
 import { FiChevronDown } from 'react-icons/fi';
-import { useUserViewState } from '../../context/UserViewStateContext';
+import { UserViewStateContext } from '../../context/UserViewStateContext';
 const Navbar = () => {
     const [isOption, setIsOpen] = useState(false);
     const handleOption = () => {
         setIsOpen(prev => !prev);
     }
 
-    const { userViewState, updateUserViewState } = useUserViewState();
+    const { userViewState, updateUserViewState } = useContext(UserViewStateContext);
     const {groupBy, orderBy} = userViewState;
     console.log(groupBy, "--", orderBy)
 
