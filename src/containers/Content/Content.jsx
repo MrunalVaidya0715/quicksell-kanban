@@ -22,7 +22,7 @@ const Content = () => {
     }, []);
 
 
-    const groupedAndSortedTickets = () => {
+    const groupSortTickets = () => {
 
         const groupedTickets = {};
         const ticketCounts = {};
@@ -49,9 +49,9 @@ const Content = () => {
         return { groupedTickets, ticketCounts };
     };
 
-    const groupedAndSorted = groupedAndSortedTickets();
+    const groupedAndSorted = groupSortTickets();
 
-    const getLabelForGroupKey = (groupKey) => {
+    const groupLabel = (groupKey) => {
         if (groupBy === 'priority') {
             const priorityLabels = {
                 4: 'Urgent',
@@ -80,7 +80,7 @@ const Content = () => {
             <div className='grids'>
                 {Object.keys(groupedAndSorted.groupedTickets).map(groupKey => (
                     <div key={groupKey}>
-                        <Label labelText={getLabelForGroupKey(groupKey)} ticketCount={groupedAndSorted.ticketCounts[groupKey]} />
+                        <Label labelText={groupLabel(groupKey)} ticketCount={groupedAndSorted.ticketCounts[groupKey]} />
                         {groupedAndSorted.groupedTickets[groupKey].map(ticket => (
                             <TicketCard key={ticket.id} {...ticket} />
                         ))}
