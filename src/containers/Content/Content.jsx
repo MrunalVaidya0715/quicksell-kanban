@@ -7,7 +7,7 @@ import { useUserViewState } from '../../context/UserViewStateContext';
 const Content = () => {
 
     const { userViewState } = useUserViewState();
-    const {groupBy, orderBy} = userViewState;
+    const { groupBy, orderBy } = userViewState;
     const [ticketsData, setTicketsData] = useState([]);
     const [usersData, setUsersData] = useState([]);
 
@@ -25,16 +25,19 @@ const Content = () => {
     const groupedAndSortedTickets = () => {
 
         const groupedTickets = {};
+        const ticketCounts = {};
         ticketsData.forEach(ticket => {
-            const groupKey = groupBy === 'user' ? ticket.userId : groupBy === 'priority'? ticket.priority: ticket.status;
+            const groupKey = groupBy === 'user' ? ticket.userId : groupBy === 'priority' ? ticket.priority : ticket.status;
             if (!groupedTickets[groupKey]) {
                 groupedTickets[groupKey] = [];
+                ticketCounts[groupKey] = 0;
             }
             groupedTickets[groupKey].push(ticket);
+            ticketCounts[groupKey]++;
         });
 
         for (const key in groupedTickets) {
-            groupedTickets[key].sort((a,b) => {
+            groupedTickets[key].sort((a, b) => {
                 if (orderBy === 'priority') {
                     return b.priority - a.priority;
                 } else {
@@ -43,7 +46,7 @@ const Content = () => {
             });
         }
 
-        return groupedTickets;
+        return { groupedTickets, ticketCounts };
     };
 
     const groupedAndSorted = groupedAndSortedTickets();
@@ -75,10 +78,10 @@ const Content = () => {
     return (
         <div className='content'>
             <div className='grids'>
-                {Object.keys(groupedAndSorted).map(groupKey => (
+                {Object.keys(groupedAndSorted.groupedTickets).map(groupKey => (
                     <div key={groupKey}>
-                        <Label labelText={getLabelForGroupKey(groupKey)}/>
-                        {groupedAndSorted[groupKey].map(ticket => (
+                        <Label labelText={getLabelForGroupKey(groupKey)} ticketCount={groupedAndSorted.ticketCounts[groupKey]} />
+                        {groupedAndSorted.groupedTickets[groupKey].map(ticket => (
                             <TicketCard key={ticket.id} {...ticket} />
                         ))}
                     </div>

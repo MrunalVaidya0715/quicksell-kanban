@@ -1,9 +1,9 @@
 import React from 'react'
 import "./Label.css"
-const Label = ({labelText}) => {
+const Label = ({labelText, ticketCount}) => {
   return (
     <div>
-        <p>{labelText}</p>
+        <p>{labelText}, {ticketCount}</p>
     </div>
   )
 }
