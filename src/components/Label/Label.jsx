@@ -5,7 +5,7 @@ import {FiMoreHorizontal} from 'react-icons/fi'
 const Label = ({labelText, ticketCount}) => {
   return (
     <div className='label'>
-        <p>{labelText} <span>{ticketCount}</span></p>
+        <p>{labelText}<span>{ticketCount}</span></p>
         <div className='icons'>
           <AiOutlinePlus/>
           <FiMoreHorizontal/>
