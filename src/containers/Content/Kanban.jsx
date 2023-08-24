@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Content.css';
+import './Kanban.css';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import Label from '../../components/Label/Label';
 import { useUserViewState } from '../../context/UserViewStateContext';
@@ -9,7 +9,7 @@ import { MdSignalCellularAlt, MdSignalCellularAlt2Bar, MdSignalCellularAlt1Bar, 
 import { PiSpinnerLight, PiClockCountdownBold, PiCircle, PiCheckCircleFill, } from 'react-icons/pi';
 import { IoPersonCircle } from 'react-icons/io5'
 import UserImg from '../../components/UserImg/UserImg';
-const Content = () => {
+const Kanban = () => {
 
     const { userViewState } = useUserViewState();
     const { groupBy, orderBy } = userViewState;
@@ -99,4 +99,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Kanban;
