@@ -77,7 +77,7 @@ const Content = () => {
             return statusLabels[groupKey];
         } else if (groupBy === 'user') {
             const user = usersData.find(user => user.id === groupKey);
-            return user ? { label: user.name, icon: <UserImg /> } : { label: '', icon: <IoPersonCircle size={24} style={{color: 'darkslategray'}} /> };
+            return user ? { label: user.name, icon: <UserImg name={user.name} /> } : { label: '', icon: <IoPersonCircle size={24} style={{color: 'darkslategray'}} /> };
         }
     }
     return (
