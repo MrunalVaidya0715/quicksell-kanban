@@ -1,10 +1,10 @@
 import React from 'react'
 import './UserImg.css'
-const UserImg = ({name}) => {
+const UserImg = ({name, isAvail}) => {
     return (
         <div className='userImg'>
             <img src="/assets/userPic.png" alt={name} />
-            <div className='available active' />
+            <div className={`available ${isAvail? "active":""}`} />
         </div>
     )
 }

@@ -77,7 +77,7 @@ const Content = () => {
             return statusLabels[groupKey];
         } else if (groupBy === 'user') {
             const user = usersData.find(user => user.id === groupKey);
-            return user ? { label: user.name, icon: <UserImg name={user.name} /> } : { label: '', icon: <IoPersonCircle size={24} style={{color: 'darkslategray'}} /> };
+            return user ? { label: user.name, icon: <UserImg name={user.name} isAvail={user.available}/> } : { label: '', icon: <IoPersonCircle size={24} style={{color: 'darkslategray'}} /> };
         }
     }
     return (
@@ -89,7 +89,7 @@ const Content = () => {
                             {groupLabel(groupKey).icon}
                         </Label>
                         {groupedAndSorted.groupedTickets[groupKey].map(ticket => (
-                            <TicketCard key={ticket.id} {...ticket} />
+                            <TicketCard key={ticket.id} {...ticket}  userData={usersData.find(user => user.id === ticket.userId)} />
                         ))}
                     </div>
                 ))}

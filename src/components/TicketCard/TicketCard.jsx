@@ -7,9 +7,10 @@ import { CgBorderStyleDashed } from 'react-icons/cg';
 import UserImg from '../UserImg/UserImg';
 import { useUserViewState } from '../../context/UserViewStateContext';
 
-const TicketCard = ({ id, title, userImg, tag, status, priority }) => {
+const TicketCard = ({ id, title, tag, status, priority, userData }) => {
     const { userViewState } = useUserViewState();
-    const { groupBy, orderBy } = userViewState;
+    const { groupBy} = userViewState;
+    
 
     return (
         <div className='ticketCard'>
@@ -58,7 +59,7 @@ const TicketCard = ({ id, title, userImg, tag, status, priority }) => {
             </div>
             {/* UserImg */}
             {
-                !(groupBy === "user") && <UserImg />
+                !(groupBy === "user") && <UserImg isAvail={userData.available} />
             }
         </div>
     )
