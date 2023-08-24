@@ -37,7 +37,7 @@ const Navbar = () => {
                     isOption && (
                         <div className='option'>
                             <div className='options'>
-                                <p style={{ fontWeight: "500", color: "var(--font-sec)" }}>Grouping</p>
+                                <p>Grouping</p>
                                 <select onChange={handleGroupBy} value={groupBy}>
                                     <option value="status">Status</option>
                                     <option value="user">User</option>
@@ -46,7 +46,7 @@ const Navbar = () => {
 
                             </div>
                             <div className='options'>
-                                <p style={{ fontWeight: "500", color: "var(--font-sec)" }}>Ordering</p>
+                                <p>Ordering</p>
                                 <select onChange={handleOrderBy} value={orderBy}>
                                     <option value="priority">Priority</option>
                                     <option value="title">Title</option>
