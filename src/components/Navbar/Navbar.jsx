@@ -15,17 +15,15 @@ const Navbar = () => {
         const newGroupBy = e.target.value;
         setGroupBy(newGroupBy);
         localStorage.setItem('userViewState', JSON.stringify({ groupBy: newGroupBy, orderBy: orderBy }));
-        setIsOpen(false);
     }
     
     const handleOrderBy = (e) => {
         const newOrderBy = e.target.value;
         setOrderBy(newOrderBy);
         localStorage.setItem('userViewState', JSON.stringify({ groupBy: groupBy, orderBy: newOrderBy }));
-        setIsOpen(false);
+        
     }
 
-    
 
     useEffect(() => {
         const savedUserViewState = localStorage.getItem('userViewState');
@@ -49,7 +47,7 @@ const Navbar = () => {
                         <div className='option'>
                             <div className='options'>
                                 <p style={{ fontWeight: "500", color: "var(--font-sec)" }}>Grouping</p>
-                                <select onChange={handleGroupBy}  value={groupBy}>
+                                <select onChange={handleGroupBy} value={groupBy}>
                                     <option value="status">Status</option>
                                     <option value="user">User</option>
                                     <option value="priority">Priority</option>
